@@ -1,0 +1,20 @@
+package com.connorwojtak.main;
+
+public class MultiThreadPrimeList {
+	
+	private Object[] primesList;
+	private int index;
+	
+	public MultiThreadPrimeList(int size) {
+		primesList = new Object[size];
+	}
+	
+	public synchronized void addValue(Object val) {
+		primesList[index] = val;
+		index++;
+	}
+	
+	public synchronized Object getValue(int i) {
+		return primesList[i];
+	}
+}

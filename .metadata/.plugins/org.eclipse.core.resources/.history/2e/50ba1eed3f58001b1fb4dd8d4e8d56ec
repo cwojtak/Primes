@@ -1,0 +1,49 @@
+package com.connorwojtak.main;
+
+public class PrimesThread implements Runnable {
+	
+	private MultiThreadPrimeList list;
+	private int start;
+	
+	public PrimesThread(Object a, Object b) {
+		try {
+			list = (MultiThreadPrimeList)a;
+			start = (int)b;
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+	
+	
+	@Override
+	public void run() {
+	try {
+	  int c = start;
+	  int a = list.getSize();
+	  int b = 1;
+	  while(b < a){
+		  b = list.getIndex();
+		  boolean prime = true;
+		  double pow = Math.sqrt(c);
+		  for(int i = 0; i < b; i++){
+			  if((int)list.getValue(i) > pow) break;
+			  if(c%(int)list.getValue(i) == 0){
+				  prime = false;
+				  break;
+			  }
+		  }
+		  if(prime && list.getIndex() < a){ 
+			  System.out.println(start + " " + b);
+			  list.addValue(c);
+		  }
+		  c += 4;
+	  }
+	  if(start == 3) {
+		  Primes.finish();
+	  }
+	}
+	} catch(Throwable e) {
+		e.printStackTrace();
+	}
+}

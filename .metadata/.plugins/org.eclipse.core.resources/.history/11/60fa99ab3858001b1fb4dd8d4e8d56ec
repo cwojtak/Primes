@@ -1,0 +1,10 @@
+package com.connorwojtak.main;
+
+public class MultiThreadPrimeList {
+	
+	private Object[] primesList;
+	
+	public MultiThreadPrimeList(int size) {
+		primesList = new Object[size];
+	}
+}
